@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual Environment
+venv/
+.venv/
+env/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+staticfiles/
+
+# SQLite Backups
+backup_sqlite_data*.json
+*.sqlite3.backup
+
+# Local backups folder
+local_backups/
+
+# Environment Variables (NEVER commit)
+.env
+.env.local
+.env.*.local
+
+# Node / React
+node_modules/
+frontend/build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Certificates
+*.pem
+*.key

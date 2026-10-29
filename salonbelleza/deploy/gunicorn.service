@@ -1,0 +1,15 @@
+[Unit]
+Description=Gunicorn - Salon Belleza (Django)
+After=network.target
+
+[Service]
+User=salonbelleza
+Group=www-data
+WorkingDirectory=/home/salonbelleza/salonbelleza
+EnvironmentFile=/home/salonbelleza/salonbelleza/.env
+ExecStart=/home/salonbelleza/salonbelleza/venv/bin/gunicorn --workers 3 --bind 127.0.0.1:8000 salonbelleza.wsgi:application
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

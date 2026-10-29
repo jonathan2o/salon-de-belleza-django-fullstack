@@ -1,0 +1,755 @@
+/* HorarioPage.css — BARBER PRO · tema azul marino + naranja */
+
+.horario-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: inherit;
+  color: var(--text-primary);
+}
+
+.horario-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.horario-selector-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.horario-selector {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  padding: 12px 40px 12px 24px;
+  border-radius: var(--radius-sm);
+  appearance: none;
+  cursor: pointer;
+  outline: none;
+  min-width: 280px;
+  text-align: left;
+  transition: var(--transition-smooth);
+  box-shadow: var(--shadow-card);
+}
+
+.horario-selector:hover, .horario-selector:focus {
+  border-color: var(--accent-orange);
+  box-shadow: var(--shadow-glow);
+}
+
+.horario-selector-icon {
+  position: absolute;
+  right: 50%;
+  transform: translateX(130px);
+  top: 50%;
+  margin-top: -12px;
+  pointer-events: none;
+  font-size: 0.8rem;
+  color: var(--accent-orange);
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+/* Calendar */
+.horario-calendar-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  box-shadow: var(--shadow-card);
+}
+
+.horario-month-year {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--text-primary);
+  text-transform: capitalize;
+  letter-spacing: 0.5px;
+}
+
+.horario-week-row {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.horario-nav-btn {
+  background: var(--accent-orange-soft);
+  border: 1px solid rgba(255, 107, 26, 0.4);
+  color: var(--accent-orange);
+  font-size: 1rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  flex-shrink: 0;
+}
+.horario-nav-btn:hover {
+  background: var(--accent-orange);
+  border-color: var(--accent-orange-hover);
+  color: #fff;
+  box-shadow: var(--shadow-glow);
+}
+.horario-nav-btn:active {
+  transform: scale(0.95);
+}
+
+.horario-days-container {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+  justify-content: center;
+  overflow-x: auto;
+  padding-bottom: 5px;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scroll-padding-inline: 12px;
+}
+.horario-days-container::-webkit-scrollbar {
+  height: 4px;
+}
+.horario-days-container::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 4px;
+}
+
+.horario-day-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 12px 10px;
+  cursor: pointer;
+  min-width: 75px;
+  transition: var(--transition-smooth);
+  position: relative;
+  scroll-snap-align: center;
+  flex: 0 0 auto;
+}
+.horario-day-card:hover {
+  background: rgba(22, 41, 75, 0.9);
+  border-color: var(--border-hover);
+}
+/* Disponible = borde verde sutil */
+.horario-day-card.disponible {
+  border-color: rgba(16, 185, 129, 0.35);
+}
+.horario-day-card.disponible:hover {
+  border-color: var(--success);
+}
+/* Ocupado = borde naranja sutil */
+.horario-day-card.ocupado {
+  border-color: rgba(255, 107, 26, 0.35);
+}
+.horario-day-card.selected {
+  background: var(--accent-orange-soft);
+  border-color: var(--accent-orange);
+  box-shadow: var(--shadow-glow);
+}
+
+.horario-hoy-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  background: var(--gradient-brand);
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 6px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.horario-day-name {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-transform: capitalize;
+  font-weight: 500;
+}
+.horario-day-card.selected .horario-day-name {
+  color: var(--accent-orange);
+}
+
+.horario-day-number {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-top: 4px;
+}
+
+.horario-counter {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+/* Table */
+.horario-table-wrapper {
+  overflow-x: auto;
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-card);
+  max-height: 60vh;
+  overflow-y: auto;
+}
+
+.horario-table-wrapper::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+.horario-table-wrapper::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 4px;
+}
+
+.horario-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.horario-table th, .horario-table td {
+  padding: 16px 24px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.horario-table th {
+  background: rgba(255, 107, 26, 0.06);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.horario-table tr {
+  transition: var(--transition-smooth);
+}
+.horario-table tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}
+.horario-table tr:last-child td {
+  border-bottom: none;
+}
+
+.horario-table td {
+  font-size: 1rem;
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+/* Estados semánticos por fila */
+.horario-table tr.disponible td:first-child {
+  box-shadow: inset 3px 0 0 var(--success);
+}
+.horario-table tr.ocupado td:first-child {
+  box-shadow: inset 3px 0 0 var(--accent-orange);
+}
+
+/* Cell styles */
+.horario-cell-hora {
+  font-weight: bold;
+  color: var(--accent-orange);
+  font-size: 1.1rem;
+  white-space: nowrap;
+}
+
+.horario-cell-cliente {
+  font-weight: 500;
+}
+
+.horario-cell-tiempo {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* Chips de estado disponible / ocupado */
+.horario-estado {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 999px;
+  transition: var(--transition-smooth);
+}
+.horario-estado.disponible {
+  background: var(--success-bg, rgba(16, 185, 129, 0.15));
+  color: var(--success);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+.horario-estado.ocupado {
+  background: var(--accent-orange-soft);
+  color: var(--accent-orange);
+  border: 1px solid rgba(255, 107, 26, 0.4);
+}
+
+/* Background Service in cell */
+.horario-service-bg {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  min-width: 200px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.horario-service-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.horario-service-bg-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, rgba(10, 22, 40, 0.9) 0%, rgba(10, 22, 40, 0.45) 100%);
+  z-index: 1;
+}
+
+.horario-service-text {
+  position: relative;
+  z-index: 2;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.8);
+}
+
+/* Past appointments */
+.horario-cita-pasada {
+  opacity: 0.55;
+}
+.horario-cita-pasada .horario-service-bg-overlay {
+  background: linear-gradient(90deg, rgba(10, 22, 40, 0.95) 0%, rgba(10, 22, 40, 0.7) 100%);
+}
+.horario-cita-pasada .horario-cell-hora {
+  color: var(--text-muted);
+}
+
+/* Slots de horario */
+.horario-slots {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.horario-slot {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+.horario-slot:hover {
+  border-color: var(--border-hover);
+}
+.horario-slot.booked {
+  border-left: 4px solid var(--accent-orange);
+}
+.horario-slot.available {
+  border-left: 4px solid var(--success);
+}
+.horario-slot.past {
+  opacity: 0.55;
+}
+
+.horario-slot-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 18px;
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition: var(--transition-smooth);
+}
+.horario-slot-trigger:hover {
+  background: rgba(255, 107, 26, 0.06);
+}
+.horario-slot-trigger:focus-visible {
+  outline: 2px solid var(--accent-orange);
+  outline-offset: 2px;
+}
+
+.horario-slot-hour {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.horario-slot-hour.booked {
+  color: var(--accent-orange);
+}
+.horario-slot-hour.available {
+  color: var(--success);
+}
+
+.horario-slot-state {
+  margin-left: auto;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.horario-slot-state.booked {
+  color: var(--accent-orange);
+  background: var(--accent-orange-soft);
+}
+.horario-slot-state.available {
+  color: var(--success);
+  background: var(--success-bg, rgba(16, 185, 129, 0.15));
+}
+
+.horario-slot-icon {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  transition: transform 0.2s ease;
+}
+.horario-slot-body {
+  padding: 0 18px 16px;
+  border-top: 1px solid var(--border-color);
+}
+.horario-slot-title {
+  margin: 14px 0 8px;
+  font-weight: 700;
+  color: var(--accent-orange);
+}
+.horario-slot-line {
+  margin: 4px 0;
+  color: var(--text-secondary);
+}
+
+.horario-booking-form {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.horario-booking-form .form-section {
+  margin-bottom: 0;
+}
+
+.horario-booking-form label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.horario-booking-form input {
+  width: 100%;
+}
+
+.horario-booking-form .btn-finalizar {
+  margin-top: 4px;
+}
+
+.selected-service-row {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.selected-service-row .remove-service-btn {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  z-index: 10;
+  width: 24px;
+  height: 24px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(239, 68, 68, 0.9);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Empty state */
+.horario-empty {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--text-muted);
+  background: var(--bg-card);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color);
+}
+.horario-empty-icon {
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  display: block;
+  color: var(--accent-orange);
+  opacity: 0.8;
+}
+.horario-empty-text {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .horario-days-container {
+    gap: 8px;
+    justify-content: flex-start;
+  }
+  .horario-day-card {
+    min-width: 60px;
+    padding: 10px 8px;
+  }
+  .horario-day-number {
+    font-size: 1.3rem;
+  }
+
+  .horario-slot-trigger {
+    padding: 12px 14px;
+  }
+  .horario-slot-body {
+    padding: 0 14px 14px;
+  }
+
+  /* Tabla de citas -> tarjetas apiladas */
+  .horario-table-wrapper {
+    overflow: visible;
+  }
+  .horario-table {
+    min-width: 0;
+  }
+  .horario-table thead {
+    display: none;
+  }
+  .horario-table,
+  .horario-table tbody,
+  .horario-table tr,
+  .horario-table td {
+    display: block;
+    width: 100%;
+  }
+  .horario-table tr {
+    margin-bottom: 12px;
+    padding: 12px 14px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background: var(--bg-input);
+  }
+  .horario-table td {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: none;
+    white-space: normal;
+  }
+  .horario-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .horario-table td:last-child {
+    border-bottom: none;
+  }
+  .horario-cell-hora {
+    font-size: 1.05rem;
+  }
+}
+@media (max-width: 480px) {
+  .horario-title {
+    font-size: 1.5rem;
+  }
+  .horario-selector {
+    min-width: 200px;
+    padding-left: 16px;
+    padding-right: 30px;
+  }
+  .horario-selector-icon {
+    transform: translateX(90px);
+  }
+  .horario-nav-btn {
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════
+   Estado de disponibilidad en Horario — Prefijo scope: .st-worker-*
+   Tarjetas en tiempo real (refresco 30 s). No toca .horario-*.
+   ═══════════════════════════════════════════════════════════ */
+
+.st-worker-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+.st-worker-card {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  background: rgba(17, 17, 27, 0.75);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.28);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.st-worker-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+.st-worker-card.st-worker-selected {
+  border-color: var(--accent-orange, #FF6B1A);
+  box-shadow: 0 0 22px rgba(255, 107, 26, 0.28);
+}
+.st-worker-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  background: rgba(255, 255, 255, 0.25);
+}
+.st-worker-card.st-worker-activo .st-worker-dot {
+  background: #34d399;
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.8);
+}
+.st-worker-card.st-worker-ocupado .st-worker-dot {
+  background: #f97316;
+  box-shadow: 0 0 8px rgba(249, 115, 22, 0.8);
+  animation: st-worker-pulse 1.6s ease-in-out infinite;
+}
+@keyframes st-worker-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.35); }
+}
+.st-worker-name {
+  font-weight: 700;
+  font-size: 0.88rem;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 46%;
+}
+.st-worker-label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.06);
+  white-space: nowrap;
+}
+.st-worker-card.st-worker-activo .st-worker-label {
+  color: #052e22;
+  background: linear-gradient(135deg, #34d399, #059669);
+  border-color: transparent;
+}
+.st-worker-card.st-worker-ocupado .st-worker-label {
+  color: #2b1200;
+  background: linear-gradient(135deg, #fbbf24, #f97316);
+  border-color: transparent;
+}
+.st-worker-ingreso {
+  margin-left: auto;
+  font-size: 0.72rem;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+}
+.st-worker-card.st-worker-activo .st-worker-ingreso { color: #6ee7b7; }
+
+@media (max-width: 640px) {
+  .st-worker-cards {
+    grid-template-columns: 1fr;
+    gap: 9px;
+    margin-top: 14px;
+  }
+  .st-worker-card {
+    flex-wrap: wrap;
+    gap: 7px;
+    padding: 10px 12px;
+  }
+  .st-worker-name {
+    max-width: 100%;
+    flex-basis: calc(100% - 22px);
+  }
+  .st-worker-ingreso { margin-left: 0; }
+}
+
+/* ── Estados manuales en las tarjetas de Horario ── */
+.st-worker-card.st-worker-descanso .st-worker-dot {
+  background: #8b5cf6;
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.8);
+}
+.st-worker-card.st-worker-descanso .st-worker-label {
+  color: #f4f0ff;
+  background: linear-gradient(135deg, #a78bfa, #7c3aed);
+  border-color: transparent;
+}
+.st-worker-card.st-worker-apagado .st-worker-dot {
+  background: #475569;
+  box-shadow: 0 0 6px rgba(148, 163, 184, 0.4);
+}
+.st-worker-card.st-worker-apagado .st-worker-label {
+  color: #e2e8f0;
+  background: linear-gradient(135deg, #475569, #1e293b);
+  border-color: transparent;
+}

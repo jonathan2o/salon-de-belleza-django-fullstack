@@ -1,0 +1,15 @@
+__pycache__/
+*.py[cod]
+**/venv/
+**/.venv/
+**/node_modules/
+**/build/
+**/frontend_build/
+backups/
+**/.env
+**/.env.local
+*.log
+**/db.sqlite3
+.idea/
+.vscode/
+.DS_Store

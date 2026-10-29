@@ -1,0 +1,504 @@
+/* ═══════════════════════════════════════════════════════════
+   Solicitudes y Aceptación de Citas (Perfil del Trabajador)
+   Estilo Creativo, Moderno y Lleno de Color
+   Prefijo: .sc-*
+   ═══════════════════════════════════════════════════════════ */
+
+.sc-card {
+  position: relative;
+  margin-bottom: 28px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: var(--cb-card, rgba(18, 18, 30, 0.85));
+  backdrop-filter: blur(14px);
+  overflow: hidden;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.45),
+    0 0 25px rgba(6, 182, 212, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.sc-card:hover {
+  border-color: rgba(6, 182, 212, 0.35);
+  box-shadow: 
+    0 16px 48px rgba(0, 0, 0, 0.55),
+    0 0 35px rgba(6, 182, 212, 0.22);
+}
+
+/* ── Cabecera Desplegable (Toggle) ── */
+.sc-toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: #fff;
+  background:
+    radial-gradient(150px 100px at 90% -20%, rgba(6, 182, 212, 0.35), transparent 70%),
+    radial-gradient(150px 100px at -10% 120%, rgba(236, 72, 153, 0.35), transparent 70%),
+    linear-gradient(125deg, rgba(14, 165, 233, 0.2), rgba(139, 92, 246, 0.22) 50%, rgba(20, 20, 35, 0.8));
+  transition: filter 0.25s ease, background 0.3s ease;
+}
+
+.sc-toggle:hover {
+  filter: brightness(1.1);
+}
+
+.sc-toggle:focus-visible {
+  outline: 2px solid #06b6d4;
+  outline-offset: -2px;
+}
+
+/* ── Icono Flotante ── */
+.sc-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+  color: #fff;
+  background: linear-gradient(135deg, #06b6d4, #8b5cf6 50%, #ec4899);
+  box-shadow: 0 4px 20px rgba(6, 182, 212, 0.5);
+  animation: sc-float 3s ease-in-out infinite;
+}
+
+@keyframes sc-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+/* ── Títulos y Textos ── */
+.sc-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.sc-title {
+  font-size: 1.22rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  background: linear-gradient(100deg, #ffffff 30%, #a5f3fc 70%, #f472b6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 14px rgba(6, 182, 212, 0.25);
+}
+
+.sc-subtitle {
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.78);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ── Badges Dinámicos ── */
+.sc-badge {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  transition: all 0.25s ease;
+}
+
+.sc-badge-pending {
+  color: #ffedd5;
+  background: linear-gradient(135deg, rgba(249, 115, 22, 0.3), rgba(239, 68, 68, 0.3));
+  border: 1px solid rgba(249, 115, 22, 0.6);
+  box-shadow: 0 0 16px rgba(249, 115, 22, 0.45);
+}
+
+.sc-badge-empty {
+  color: #a7f3d0;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+}
+
+.sc-badge-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #f97316;
+  box-shadow: 0 0 8px #f97316;
+  animation: sc-pulse 1.8s ease-in-out infinite;
+}
+
+.sc-badge-empty .sc-badge-dot {
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: none;
+}
+
+@keyframes sc-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.4); opacity: 0.6; }
+}
+
+/* ── Chevron Animado ── */
+.sc-chevron {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sc-chevron.open {
+  transform: rotate(180deg);
+  color: #06b6d4;
+}
+
+/* ── Panel Interior Desplegable ── */
+.sc-panel {
+  padding: 24px;
+  background: rgba(12, 12, 22, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  animation: sc-slide-down 0.3s ease-out;
+}
+
+@keyframes sc-slide-down {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Mensaje de Notificación (Feedback Toast) ── */
+.sc-feedback-msg {
+  padding: 12px 18px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  animation: sc-fade-in 0.3s ease;
+}
+
+.sc-feedback-success {
+  background: rgba(16, 185, 129, 0.2);
+  border: 1px solid rgba(16, 185, 129, 0.5);
+  color: #6ee7b7;
+}
+
+.sc-feedback-danger {
+  background: rgba(244, 63, 94, 0.2);
+  border: 1px solid rgba(244, 63, 94, 0.5);
+  color: #fda4af;
+}
+
+@keyframes sc-fade-in {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Estado Vacío (Sin Citas) ── */
+.sc-empty-state {
+  text-align: center;
+  padding: 36px 20px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+}
+
+.sc-empty-icon {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  display: inline-block;
+  animation: sc-float 4s ease-in-out infinite;
+}
+
+.sc-empty-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.sc-empty-desc {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+/* ── Grid de Solicitudes ── */
+.sc-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* ── Tarjeta Individual de Cita ── */
+.sc-item-card {
+  position: relative;
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    radial-gradient(120px 80px at 0% 0%, rgba(6, 182, 212, 0.15), transparent 70%),
+    linear-gradient(145deg, rgba(30, 27, 46, 0.75), rgba(18, 18, 30, 0.95));
+  padding: 20px 22px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sc-item-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(6, 182, 212, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(6, 182, 212, 0.18);
+}
+
+/* Header del item: Fecha y Pill de Estado */
+.sc-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.sc-datetime-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(6, 182, 212, 0.15);
+  border: 1px solid rgba(6, 182, 212, 0.35);
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #67e8f9;
+}
+
+.sc-origin-pill {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: #fed7aa;
+  background: rgba(249, 115, 22, 0.15);
+  border: 1px solid rgba(249, 115, 22, 0.35);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+/* Cuerpo del item: Cliente y Servicio */
+.sc-item-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.sc-client-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.sc-client-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: 0.2px;
+}
+
+.sc-client-contact {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.sc-phone-link {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
+}
+
+.sc-phone-link:hover {
+  color: #38bdf8;
+  text-decoration: underline;
+}
+
+.sc-btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(37, 211, 102, 0.15);
+  border: 1px solid rgba(37, 211, 102, 0.45);
+  color: #4ade80;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.sc-btn-whatsapp:hover {
+  background: #25d366;
+  color: #052e16;
+  box-shadow: 0 0 12px rgba(37, 211, 102, 0.5);
+  transform: translateY(-1px);
+}
+
+/* Información del Servicio */
+.sc-service-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.sc-service-badge {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.25), rgba(236, 72, 153, 0.25));
+  border: 1px solid rgba(139, 92, 246, 0.45);
+  color: #e9d5ff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 12px;
+}
+
+.sc-service-meta {
+  display: flex;
+  gap: 12px;
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.sc-meta-price {
+  color: #facc15;
+  font-weight: 700;
+}
+
+/* ── Botones de Acción (Aceptar / Cancelar) ── */
+.sc-item-actions {
+  display: flex;
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.sc-btn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 18px;
+  border-radius: 14px;
+  font-size: 0.92rem;
+  font-weight: 800;
+  letter-spacing: 0.3px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.22s ease;
+}
+
+.sc-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+/* Botón Aceptar (Esmeralda Vibrante) */
+.sc-btn-accept {
+  color: #fff;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  box-shadow: 0 4px 18px rgba(16, 185, 129, 0.45);
+}
+
+.sc-btn-accept:hover:not(:disabled) {
+  background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+  box-shadow: 0 6px 24px rgba(16, 185, 129, 0.65);
+  transform: translateY(-2px);
+}
+
+.sc-btn-accept:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Botón Cancelar (Rojo Coral Elegante) */
+.sc-btn-cancel {
+  color: #fff;
+  background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
+  box-shadow: 0 4px 18px rgba(244, 63, 94, 0.45);
+}
+
+.sc-btn-cancel:hover:not(:disabled) {
+  background: linear-gradient(135deg, #fb7185 0%, #e11d48 100%);
+  box-shadow: 0 6px 24px rgba(244, 63, 94, 0.65);
+  transform: translateY(-2px);
+}
+
+.sc-btn-cancel:active:not(:disabled) {
+  transform: scale(0.98);
+}
+
+/* Spinner sutil para botones */
+.sc-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: sc-spin 0.6s linear infinite;
+}
+
+@keyframes sc-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .sc-toggle {
+    padding: 16px 18px;
+    gap: 12px;
+  }
+  .sc-title {
+    font-size: 1.05rem;
+  }
+  .sc-icon {
+    width: 42px;
+    height: 42px;
+    font-size: 1.15rem;
+  }
+  .sc-badge {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+  .sc-panel {
+    padding: 18px 14px;
+  }
+  .sc-item-body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .sc-service-info {
+    align-items: flex-start;
+  }
+  .sc-item-actions {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,312 @@
+/* DrawerMenu.css — BARBER PRO · tema azul marino + naranja */
+
+.drawer-toggle-btn {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  border-radius: var(--radius-sm);
+  background: rgba(10, 22, 40, 0.85);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  box-shadow: var(--shadow-card);
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(4px);
+}
+
+.drawer-toggle-btn:hover {
+  background: var(--accent-orange-soft);
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+  box-shadow: var(--shadow-glow);
+  transform: scale(1.05);
+}
+
+.drawer-toggle-btn:active {
+  transform: scale(0.97);
+}
+
+/* Overlay / Fondo Desenfocado */
+.drawer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px);
+  z-index: 1001;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+}
+
+.drawer-overlay.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Contenedor del Panel Lateral */
+.drawer-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 320px;
+  background: var(--bg-obsidian);
+  border-right: 1px solid var(--border-color);
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.8);
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(-100%);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.drawer-container.open {
+  transform: translateX(0);
+}
+
+/* Header del Drawer */
+.drawer-header {
+  padding: 30px 20px 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+}
+
+.drawer-brand {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.drawer-subbrand {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Acceso Discreto a Gestión - Alineado a la izquierda */
+.drawer-discreet-btn {
+  align-self: flex-start;
+  margin-top: 8px;
+  margin-bottom: 2px;
+  min-width: 44px;
+  min-height: 44px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.drawer-discreet-btn:hover {
+  color: var(--accent-orange);
+  background: var(--accent-orange-soft);
+  border-color: var(--accent-orange);
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
+}
+
+.drawer-discreet-btn .drawer-discreet-svg {
+  transition: transform 0.3s ease;
+}
+
+.drawer-discreet-btn:hover .drawer-discreet-svg {
+  transform: rotate(45deg);
+}
+
+.drawer-discreet-btn:active {
+  transform: translateY(0);
+}
+
+.drawer-header-line {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, var(--accent-orange) 0%, rgba(255, 107, 26, 0) 100%);
+  margin-top: 12px;
+}
+
+/* Lista de Navegación */
+.drawer-nav {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 10px;
+  flex-grow: 1;
+  gap: 4px;
+}
+
+/* Items del Menú */
+.drawer-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 44px;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  transition: var(--transition-smooth);
+  background: transparent;
+  border: 1px solid transparent;
+  text-align: left;
+  width: 100%;
+}
+
+.drawer-item-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: var(--transition-smooth);
+}
+
+.drawer-item-icon {
+  font-size: 18px;
+  width: 24px;
+  min-width: 24px;
+  text-align: center;
+  color: var(--text-muted);
+  transition: var(--transition-smooth);
+}
+
+/* Hover Effect */
+.drawer-item:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--border-color);
+}
+
+.drawer-item:hover .drawer-item-content {
+  color: var(--text-primary);
+}
+
+.drawer-item:hover .drawer-item-icon {
+  color: var(--accent-orange);
+}
+
+.drawer-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10%;
+  height: 80%;
+  width: 3px;
+  background: var(--accent-orange);
+  border-radius: 0 4px 4px 0;
+  opacity: 0;
+  box-shadow: var(--shadow-glow);
+  transition: opacity 0.2s ease;
+}
+
+.drawer-item:hover::before {
+  opacity: 1;
+}
+
+/* Active/Selected Effect */
+.drawer-item.active {
+  background: var(--accent-orange-soft);
+  border: 1px solid rgba(255, 107, 26, 0.45);
+}
+
+.drawer-item.active .drawer-item-content {
+  color: var(--accent-orange);
+  font-weight: 600;
+}
+
+.drawer-item.active .drawer-item-icon {
+  color: var(--accent-orange);
+}
+
+.drawer-item.active::before {
+  opacity: 1;
+  background: var(--accent-orange);
+  box-shadow: var(--shadow-glow);
+}
+
+/* Badge Próximamente */
+.drawer-badge {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: 4px;
+  margin-left: 38px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Elementos inactivos (Planes, QR) */
+.drawer-item.inactive {
+  cursor: default;
+}
+
+.drawer-item.inactive:hover {
+  background: transparent;
+  border-color: transparent;
+}
+
+.drawer-item.inactive:hover::before {
+  opacity: 0;
+}
+
+.drawer-item.inactive:hover .drawer-item-content {
+  color: var(--text-secondary);
+}
+
+.drawer-item.inactive:hover .drawer-item-icon {
+  color: var(--text-muted);
+}
+
+/* Footer del Drawer */
+.drawer-footer {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Responsive Móvil */
+@media (max-width: 768px) {
+  .drawer-container {
+    width: 75%;
+  }
+
+  .drawer-item {
+    min-height: 48px;
+    padding: 14px 16px;
+  }
+
+  .drawer-toggle-btn {
+    width: 48px;
+    height: 48px;
+  }
+
+  .drawer-discreet-btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px 14px;
+  }
+}

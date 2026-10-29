@@ -1,0 +1,177 @@
+.premium-service-card {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    border-radius: var(--radius-md, 12px);
+    overflow: hidden;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: var(--transition-smooth, all 0.28s cubic-bezier(0.4, 0, 0.2, 1));
+    border: 1px solid var(--border-color, #22345E);
+    box-shadow: var(--shadow-card, 0 8px 24px -8px rgba(2, 8, 23, 0.7));
+    background: var(--bg-obsidian, #0A1628);
+    margin-bottom: 12px;
+}
+
+.premium-service-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-card, 0 8px 24px -8px rgba(2, 8, 23, 0.7)), 0 0 16px rgba(255, 107, 26, 0.18);
+    border-color: var(--border-hover, #31487F);
+}
+
+.premium-service-card:active {
+    transform: translateY(0);
+}
+
+.premium-service-card.selected {
+    border-color: var(--theme-color, var(--accent-orange, #FF6B1A));
+    box-shadow: 0 0 15px var(--theme-color, rgba(255, 107, 26, 0.5)), var(--shadow-card, 0 8px 24px -8px rgba(2, 8, 23, 0.7));
+}
+
+/* Background Image Layer */
+.premium-service-bg-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.premium-service-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right center; /* Mantener los cristales visibles a la derecha */
+    transition: filter 0.28s ease, transform 0.28s ease, opacity 0.28s ease;
+    opacity: 0.8;
+}
+
+.premium-service-card:hover .premium-service-bg-img {
+    filter: brightness(1.15) contrast(1.05);
+    transform: scale(1.02);
+}
+
+.premium-service-card.selected .premium-service-bg-img {
+    filter: brightness(1.2);
+    opacity: 1;
+}
+
+/* Overlay gradient para asegurar que el texto sea legible siempre */
+.premium-service-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(10, 22, 40, 0.92) 0%, rgba(10, 22, 40, 0.62) 40%, rgba(10, 22, 40, 0) 100%);
+    z-index: 2;
+}
+
+/* Content Layer */
+.premium-service-content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.premium-icon-circle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color, #22345E);
+    background: var(--bg-input, #16294B);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: var(--text-primary, #F1F5F9);
+    margin-right: 16px;
+    box-shadow: var(--shadow-card, 0 8px 24px -8px rgba(2, 8, 23, 0.7));
+    transition: var(--transition-smooth, all 0.28s cubic-bezier(0.4, 0, 0.2, 1));
+}
+
+.premium-service-card:hover .premium-icon-circle {
+    background: rgba(255, 107, 26, 0.14);
+    border-color: var(--accent-orange, #FF6B1A);
+}
+
+.premium-service-card.selected .premium-icon-circle {
+    border-color: var(--theme-color, var(--accent-orange, #FF6B1A));
+    box-shadow: 0 0 10px var(--theme-color, rgba(255, 107, 26, 0.5));
+    color: var(--theme-color, var(--accent-orange, #FF6B1A));
+}
+
+.premium-service-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary, #F1F5F9);
+    letter-spacing: 0.5px;
+    flex-grow: 1;
+    text-align: left;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+}
+
+.premium-service-right-group {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.premium-service-time {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-secondary, #9CA3AF);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+
+.premium-check-circle {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--theme-color, var(--accent-orange, #FF6B1A));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    box-shadow: 0 0 10px var(--theme-color, rgba(255, 107, 26, 0.5));
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    .premium-service-card {
+        height: 60px;
+    }
+    .premium-service-content {
+        padding: 0 12px;
+    }
+    .premium-icon-circle {
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+        margin-right: 12px;
+    }
+    .premium-service-title {
+        font-size: 14px;
+    }
+    .premium-service-time {
+        font-size: 12px;
+    }
+}

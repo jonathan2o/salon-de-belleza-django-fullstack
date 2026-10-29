@@ -1,0 +1,187 @@
+/* GestionPage.css — BARBER PRO · tema azul marino + naranja */
+
+.gestion-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px 80px 20px;
+}
+
+.gestion-header {
+  text-align: center;
+  margin-bottom: 35px;
+  position: relative;
+}
+
+.btn-volver-publico {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-color);
+  color: var(--text-primary, #F3F4F6);
+  padding: 10px 18px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 24px;
+  transition: var(--transition-smooth);
+}
+
+.btn-volver-publico:hover {
+  background: var(--accent-orange-soft);
+  border-color: var(--accent-orange);
+  color: var(--accent-orange);
+  transform: translateX(-3px);
+  box-shadow: var(--shadow-glow);
+}
+
+.gestion-subtitle {
+  color: var(--text-secondary, #9CA3AF);
+  font-size: 15px;
+  margin-top: 6px;
+}
+
+.gestion-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.gestion-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: 24px 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: pointer;
+  box-shadow: var(--shadow-card);
+  backdrop-filter: blur(10px);
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  text-align: left;
+}
+
+.gestion-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-orange);
+  background: var(--bg-input);
+  box-shadow: var(--shadow-card), var(--shadow-glow);
+}
+
+.gestion-card-icon-wrapper {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-brand);
+  border: 1px solid rgba(255, 107, 26, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+  box-shadow: 0 4px 14px rgba(255, 107, 26, 0.3);
+}
+
+.gestion-card:hover .gestion-card-icon-wrapper {
+  border-color: var(--accent-orange);
+  transform: scale(1.05);
+  box-shadow: var(--shadow-glow);
+}
+
+.gestion-card-icon {
+  font-size: 26px;
+  color: #fff;
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.4));
+}
+
+.gestion-card-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.gestion-card-title-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.gestion-card-title {
+  color: var(--text-primary);
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: 0.3px;
+}
+
+.gestion-card-desc {
+  color: var(--text-secondary, #9CA3AF);
+  font-size: 13px;
+  margin: 4px 0 0 0;
+  line-height: 1.4;
+}
+
+.gestion-badge {
+  font-size: 11px;
+  color: var(--text-secondary);
+  background: var(--accent-orange-soft);
+  padding: 2px 8px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 107, 26, 0.35);
+}
+
+.gestion-card-arrow {
+  color: var(--text-muted);
+  font-size: 20px;
+  font-weight: 700;
+  flex-shrink: 0;
+  transition: var(--transition-smooth);
+}
+
+.gestion-card:hover .gestion-card-arrow {
+  color: var(--accent-orange);
+  transform: translateX(4px);
+}
+
+.gestion-card:active {
+  transform: translateY(-1px);
+}
+
+.gestion-card-disabled {
+  opacity: 0.85;
+}
+
+/* Adaptación para Tabletas */
+@media (max-width: 768px) {
+  .gestion-page {
+    padding: 30px 16px 60px 16px;
+  }
+  .gestion-grid {
+    gap: 16px;
+  }
+  .gestion-card {
+    padding: 20px 16px;
+  }
+}
+
+/* Adaptación para Celulares */
+@media (max-width: 580px) {
+  .gestion-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+  .gestion-card {
+    padding: 16px 14px;
+  }
+  .gestion-card-icon-wrapper {
+    width: 46px;
+    height: 46px;
+  }
+  .gestion-card-icon {
+    font-size: 22px;
+  }
+}
